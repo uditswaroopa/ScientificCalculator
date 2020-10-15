@@ -11,10 +11,7 @@ class CalcApp extends StatefulWidget {
 class _CalcAppState extends State<CalcApp> {
   Model object = new Model('', ''); //creating object of class Model
 
-  tap(String x) {
-    if(x == 'e')
-      x = 'e^';
-
+  baseConversion(String x){
     if(x == 'D to B' || x == 'D to O' || x == 'D to H'){
       if(x == 'D to B')
         object.baseConversion(2);  
@@ -24,7 +21,11 @@ class _CalcAppState extends State<CalcApp> {
         object.baseConversion(16);  
       x = '';
     }
-
+  }
+  tap(String x) {
+    if(x == 'e')
+      x = 'e^';
+    baseConversion()
     setState(() {
       if(object.expression == 'Incorrect Syntax')
         object.expression = '';
